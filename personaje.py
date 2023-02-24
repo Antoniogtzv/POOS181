@@ -1,24 +1,36 @@
 class Personaje:
-    #atributos
-    especie= "Humano"
-    nombre= "MARCUS FENIX"
-    altura= 19.90
+  #Creamos el constructor
+  def _init_(self, esp, nom, alt):
+    self.__nombre = nom
+    self.__especie = esp
+    self.__altura = alt
+    
+  def correr(self,estado):
+    if estado == True:
+        print('El personaje '+self.__nombre+' está corriendo')
+    else:
+      print('El personaje '+self.__nombre+' está quieto')
+        
+            
+        
+  def lanzarGranada(self):
+    print('El personaje '+self.__nombre+' lanzó una granada')
 
-    #Metodos Personaje
+  def recargarArma(self,municiones):
+    cargador=5
+    cargador = cargador + municiones
+    print('El personaje '+self.__nombre+' recargó su arma y ahora tiene: '+str(cargador)+' municiones')
 
-    def correr(self,status):
-        if(status):
-            print("el personaje " +self.nombre +"esta corriendo")
-        else:
-            (status)
-            print("el personaje " +self.nombre +"se detubo")
+  def recargarArma(self,municiones):
+    cargador=5
+    cargador = cargador + municiones
+    print('El personaje '+self.__nombre+' recargó su arma y ahora tiene: '+str(cargador)+' municiones')
 
-        def lanzargranada(self):
-            print("se lanzo granada")
-
-        def recargaArma(self, municiones):
-            cargador= 5
-            cargador = cargador + municiones
-            print("el arma tiene ahora"+ cargador + "balas")
-
+    def getEspecie(self):
+      return self.__especie
+    
+    def setEspecie(self,esp):
+      self.__especie= esp
+    
+      
 
