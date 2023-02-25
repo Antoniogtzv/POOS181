@@ -21,6 +21,9 @@ class Personaje:
     cargador = cargador + municiones
     print('El personaje '+self.__nombre+' recargó su arma y ahora tiene: '+str(cargador)+' municiones')
 
+  def __pensar(self):
+     print("estoy pensando..............")
+
   def recargarArma(self,municiones):
     cargador=5
     cargador = cargador + municiones
@@ -31,6 +34,17 @@ class Personaje:
     
     def setEspecie(self,esp):
       self.__especie= esp
+      
+    def getnombre(self):
+        return self.__nombre
+    
+    def setaltura(self,esp):
+         return self.__nombre
+    
+    def getAltura(self):
+      self.__altura =alt
+
+
     
       
 
