@@ -4,13 +4,13 @@ from tkinter import Tk,Frame,Button,messagebox
 def mostrarMensaje():
     messagebox.showinfo("aviso","este mensaje es para avisar algo")
     messagebox.showerror("Todo Fallo con exito")
-    print(messagebox.askokcancel("pregunta","el o ella jugo con tu corazon"))
+    messagebox.askokcancel("pregunta","el o ella jugo con tu corazon")
     messagebox.askokcancel("ella jugo con tu corazon")
 
 #agregar botones
 def agregarBoton():
     botonzul.config(text="+",bg="green",fg="white")
-    botonNuevo=Button(seccion3,text="Boton nuevo")
+    botonNuevo=Button(seccion3,text="Boton Nuevo")
     botonNuevo.pack()
 
 
@@ -36,7 +36,7 @@ seccion4.pack(expand=True,fill='both')
 botonzul= Button(seccion1,text="boton azul",fg="blue",command=mostrarMensaje)
 botonzul.place(x=60, y=60)
 
-BotonNegro= Button(seccion2,text="boton negro",fg="#000000",command=agregarBoton)
+BotonNegro= Button(seccion2,text="Agregar Boton",fg="#000000")
 BotonNegro.grid(row=0, column=1)
 
 BotonVerde= Button(seccion2,text="boton verde",fg="green")
