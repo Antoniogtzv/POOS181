@@ -1,50 +1,34 @@
-class Personaje:
-  #Creamos el constructor
-  def _init_(self, esp, nom, alt):
-    self.__nombre = nom
-    self.__especie = esp
-    self.__altura = alt
-    
-  def correr(self,estado):
-    if estado == True:
-        print('El personaje '+self.__nombre+' está corriendo')
+import tkinter as tk
+from tkinter import messagebox
+
+def login():
+    email = email_entry.get()
+    password = password_entry.get()
+
+    # Comprobar si el usuario y la contraseña son correctos
+    if email == "antonioguvi0419@gmail.com" and password == "contraseña":
+        messagebox.showinfo("Inicio de sesión", "El usuario y contraseña son correctos. Bienvendio")
+        root.destroy()
     else:
-      print('El personaje '+self.__nombre+' está quieto')
-        
-            
-        
-  def lanzarGranada(self):
-    print('El personaje '+self.__nombre+' lanzó una granada')
+        messagebox.showerror("Error", "Usuario o contraseña incorrectos")
+        password_entry.delete(0, tk.END)
 
-  def recargarArma(self,municiones):
-    cargador=5
-    cargador = cargador + municiones
-    print('El personaje '+self.__nombre+' recargó su arma y ahora tiene: '+str(cargador)+' municiones')
+root = tk.Tk()
+root.title("Inicio de sesión")
 
-  def __pensar(self):
-     print("estoy pensando..............")
+email_label = tk.Label(root, text="Correo electrónico:")
+email_label.grid(row=0, column=0, padx=5, pady=5)
 
-  def recargarArma(self,municiones):
-    cargador=5
-    cargador = cargador + municiones
-    print('El personaje '+self.__nombre+' recargó su arma y ahora tiene: '+str(cargador)+' municiones')
+email_entry = tk.Entry(root)
+email_entry.grid(row=0, column=1, padx=5, pady=5)
 
-    def getEspecie(self):
-      return self.__especie
-    
-    def setEspecie(self,esp):
-      self.__especie= esp
-      
-    def getnombre(self):
-        return self.__nombre
-    
-    def setaltura(self,esp):
-         return self.__nombre
-    
-    def getAltura(self):
-      self.__altura =alt
+password_label = tk.Label(root, text="Contraseña:")
+password_label.grid(row=1, column=0, padx=5, pady=5)
 
+password_entry = tk.Entry(root, show="*")
+password_entry.grid(row=1, column=1, padx=5, pady=5)
 
-    
-      
+login_button = tk.Button(root, text="Iniciar sesión", command=login)
+login_button.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
 
+root.mainloop()

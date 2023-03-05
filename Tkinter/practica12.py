@@ -7,7 +7,10 @@ ventana.geometry("400x200")
 seccion1=Frame(ventana, bg="#F0F8FF")
 seccion1.pack(expand=True,fill='both')
 def mostrarMensaje():
-     messagebox.showinfo("aviso","este mensaje es para avisar algo")("Login")
+     messagebox.showinfo("Ingresar","Ingresa usuario")("Login")
+     input(int("ingresa tu correo"))
+
+     
 
 
 
