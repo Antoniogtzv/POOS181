@@ -1,3 +1,7 @@
+import random
+import string
+import tkinter as tk
+
 class PasswordGeneratorGUI:
     def __init__(self, master):
         self.master = master
@@ -25,3 +29,4 @@ class PasswordGeneratorGUI:
 
 root = tk.Tk()
 gui = PasswordGeneratorGUI(root)
+root.mainloop()
