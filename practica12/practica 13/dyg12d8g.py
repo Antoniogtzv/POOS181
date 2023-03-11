@@ -5,21 +5,21 @@ import tkinter as tk
 class PasswordGeneratorGUI:
     def __init__(self, master):
         self.master = master
-        master.title("Generador de contraseñas")
+        master.title("Contra")
 
         # Crear widgets
         self.label = tk.Label(master, text="Longitud de la contraseña:")
         self.label.pack()
 
         self.entry = tk.Entry(master)
-        self.entry.insert(0, "8") # Valor por defecto
+        self.entry.insert(0, "8") 
         self.entry.pack()
 
         self.button = tk.Button(master, text="Generar contraseña", command=self.generate_password)
         self.button.pack()
 
         self.password_label = tk.Label(master, text="")
-        self.password_label.pack()
+        self.password_label.pack()3
 
     def generate_password(self):
         length = int(self.entry.get())
