@@ -1,76 +1,70 @@
 import tkinter as tk
-import random
 
-class Estudiante:
-    def __init__(self, nombre, apellido_paterno, apellido_materno, anio_nacimiento, carrera):
-        self.nombre = nombre
-        self.apellido_paterno = apellido_paterno
-        self.apellido_materno = apellido_materno
-        self.anio_nacimiento = anio_nacimiento
-        self.carrera = carrera
+# Función que se ejecuta cuando se hace clic en el botón "Imprimir"
+def imprimir():
+    # Obtener los valores ingresados por el usuario
+    nombre = entry_nombre.get()
+    apellidos = entry_apellidos.get()
+    anio_nacimiento = int(entry_anio_nacimiento.get())
+    anio_actual = int(entry_anio_actual.get())
+    carrera = entry_carrera.get()
+    numero_aleatorio = int(entry_numero_aleatorio.get())
 
-    def generar_matricula(self):
-        anio_actual = datetime.datetime.now().year % 100
-        anio_nacimiento = self.anio_nacimiento % 100
-        primera_letra_nombre = self.nombre[0]
-        dos_letras_apellido_paterno = self.apellido_paterno[:2]
-        dos_letras_apellido_materno = self.apellido_materno[:2]
-        dos_digitos_aleatorios = '{:02d}'.format(random.randint(0, 99))
-        tres_primeras_letras_carrera = self.carrera[:3]
+    # Calcular los primeros dos dígitos del año de nacimiento
+    anio_nacimiento_dos_digitos = str(anio_nacimiento)[:2]
 
-        matricula = f'{anio_actual}{anio_nacimiento}{primera_letra_nombre}{dos_letras_apellido_paterno}{dos_letras_apellido_materno}{dos_digitos_aleatorios}{tres_primeras_letras_carrera}'
+    # Imprimir los resultados
+    print("Nombre: ", nombre)
+    print("Apellidos: ", apellidos)
+    print("Año de nacimiento (2 primeros dígitos): ", anio_nacimiento_dos_digitos)
+    print("Carrera: ", carrera)
+    print("Número aleatorio (2 primeros dígitos): ", str(numero_aleatorio)[:2])
 
-        return matricula
+# Crear la ventana principal
+ventana = tk.Tk()
 
-class MatriculaGenerator:
-    def __init__(self):
-        self.root = tk.Tk()
-        self.root.title('Generador de matrícula')
-        
-        self.nombre_label = tk.Label(self.root, text='Nombre:')
-        self.nombre_label.pack()
-        self.nombre_entry = tk.Entry(self.root)
-        self.nombre_entry.pack()
+# Crear los widgets de entrada
+label_nombre = tk.Label(ventana, text="Nombre:")
+entry_nombre = tk.Entry(ventana)
 
-        self.apellido_paterno_label = tk.Label(self.root, text='Apellido Paterno:')
-        self.apellido_paterno_label.pack()
-        self.apellido_paterno_entry = tk.Entry(self.root)
-        self.apellido_paterno_entry.pack()
+label_apellidos = tk.Label(ventana, text="Apellidos:")
+entry_apellidos = tk.Entry(ventana)
 
-        self.apellido_materno_label = tk.Label(self.root, text='Apellido Materno:')
-        self.apellido_materno_label.pack()
-        self.apellido_materno_entry = tk.Entry(self.root)
-        self.apellido_materno_entry.pack()
+label_anio_nacimiento = tk.Label(ventana, text="Año de nacimiento:")
+entry_anio_nacimiento = tk.Entry(ventana)
 
-        self.anio_nacimiento_label = tk.Label(self.root, text='Año de nacimiento:')
-        self.anio_nacimiento_label.pack()
-        self.anio_nacimiento_entry = tk.Entry(self.root)
-        self.anio_nacimiento_entry.pack()
+label_anio_actual = tk.Label(ventana, text="Año actual:")
+entry_anio_actual = tk.Entry(ventana)
 
-        self.carrera_label = tk.Label(self.root, text='Carrera:')
-        self.carrera_label.pack()
-        self.carrera_entry = tk.Entry(self.root)
-        self.carrera_entry.pack()
+label_carrera = tk.Label(ventana, text="Carrera:")
+entry_carrera = tk.Entry(ventana)
 
-        self.generar_matricula_button = tk.Button(self.root, text='Generar matrícula', command=self.generar_matricula)
-        self.generar_matricula_button.pack()
+label_numero_aleatorio = tk.Label(ventana, text="Número aleatorio:")
+entry_numero_aleatorio = tk.Entry(ventana)
 
-        self.matricula_label = tk.Label(self.root, text='')
-        self.matricula_label.pack()
+# Crear el botón "Imprimir"
+boton_imprimir = tk.Button(ventana, text="Imprimir", command=imprimir)
 
-    def generar_matricula(self):
-        nombre = self.nombre_entry.get()
-        apellido_paterno = self.apellido_paterno_entry.get()
-        apellido_materno = self.apellido_materno_entry.get()
-        anio_nacimiento = int(self.anio_nacimiento_entry.get())
-        carrera = self.carrera_entry.get()
+# Ubicar los widgets en la ventana
+label_nombre.grid(row=0, column=0)
+entry_nombre.grid(row=0, column=1)
 
-        estudiante = Estudiante(nombre, apellido_paterno, apellido_materno, anio_nacimiento, carrera)
-        matricula = estudiante.generar_matricula()
-        self.matricula_label.config(text=f'Su matrícula es: {matricula}')
+label_apellidos.grid(row=1, column=0)
+entry_apellidos.grid(row=1, column=1)
 
-    def start(self):
-        self.root.mainloop()
+label_anio_nacimiento.grid(row=2, column=0)
+entry_anio_nacimiento.grid(row=2, column=1)
 
-if __name__ == '__main__':
-    GeneratorExit
+label_anio_actual.grid(row=3, column=0)
+entry_anio_actual.grid(row=3, column=1)
+
+label_carrera.grid(row=4, column=0)
+entry_carrera.grid(row=4, column=1)
+
+label_numero_aleatorio.grid(row=5, column=0)
+entry_numero_aleatorio.grid(row=5, column=1)
+
+boton_imprimir.grid(row=6, column=1)
+
+# Iniciar la ventana
+ventana.mainloop()

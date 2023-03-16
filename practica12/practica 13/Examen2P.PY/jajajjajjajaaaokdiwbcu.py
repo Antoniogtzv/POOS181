@@ -15,7 +15,6 @@ def mostrar_nombre():
     nombre = entrada_nombre.get()
     print("El nombre ingresado es:", nombre)
 
-# Creamos un botón para que el usuario envíe los datos
 boton_enviar = tk.Button(ventana, text="Enviar", command=mostrar_nombre)
 boton_enviar.pack()
 
