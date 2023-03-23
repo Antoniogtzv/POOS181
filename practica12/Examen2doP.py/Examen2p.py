@@ -1,29 +1,29 @@
 import tkinter as tk
+from tkinter import messagebox
+import random
 
-# Función que se ejecuta cuando se hace clic en el botón "Imprimir"
+
 def imprimir():
-    # Obtener los valores ingresados por el usuario
-    nombre = entry_nombre.get()
-    apellidos = entry_apellidos.get()
-    anio_nacimiento = int(entry_anio_nacimiento.get())
-    anio_actual = int(entry_anio_actual.get())
-    carrera = entry_carrera.get()
-    numero_aleatorio = int(entry_numero_aleatorio.get())
+    
+    nombre = entry_nombre.get()[:2]
+    apellidos = entry_apellidos.get()[:2]
+    anio_nacimiento = entry_anio_nacimiento.get()[:2]
+    anio_actual = entry_anio_actual.get()[:2]
+    carrera = entry_carrera.get()[:2]
+    numero_aleatorio = str(random.randint(10, 99))
 
-    # Calcular los primeros dos dígitos del año de nacimiento
-    anio_nacimiento_dos_digitos = str(anio_nacimiento)[:2]
+    messagebox.showinfo("Resultados", 
+                        f"Nombre: {nombre}\n"
+                        f"Apellidos: {apellidos}\n"
+                        f"Año de nacimiento : {anio_nacimiento}\n"
+                        f"Año actual : {anio_actual}\n"
+                        f"Carrera : {carrera}\n"
+                        f"Número aleatorio (: {numero_aleatorio}")
 
-    # Imprimir los resultados
-    print("Nombre: ", nombre)
-    print("Apellidos: ", apellidos)
-    print("Año de nacimiento (2 primeros dígitos): ", anio_nacimiento_dos_digitos)
-    print("Carrera: ", carrera)
-    print("Número aleatorio (2 primeros dígitos): ", str(numero_aleatorio)[:2])
 
-# Crear la ventana principal
 ventana = tk.Tk()
 
-# Crear los widgets de entrada
+
 label_nombre = tk.Label(ventana, text="Nombre:")
 entry_nombre = tk.Entry(ventana)
 
@@ -39,13 +39,9 @@ entry_anio_actual = tk.Entry(ventana)
 label_carrera = tk.Label(ventana, text="Carrera:")
 entry_carrera = tk.Entry(ventana)
 
-label_numero_aleatorio = tk.Label(ventana, text="Número aleatorio:")
-entry_numero_aleatorio = tk.Entry(ventana)
-
-# Crear el botón "Imprimir"
 boton_imprimir = tk.Button(ventana, text="Imprimir", command=imprimir)
 
-# Ubicar los widgets en la ventana
+
 label_nombre.grid(row=0, column=0)
 entry_nombre.grid(row=0, column=1)
 
@@ -61,10 +57,7 @@ entry_anio_actual.grid(row=3, column=1)
 label_carrera.grid(row=4, column=0)
 entry_carrera.grid(row=4, column=1)
 
-label_numero_aleatorio.grid(row=5, column=0)
-entry_numero_aleatorio.grid(row=5, column=1)
+boton_imprimir.grid(row=5, column=1)
 
-boton_imprimir.grid(row=6, column=1)
 
-# Iniciar la ventana
 ventana.mainloop()
